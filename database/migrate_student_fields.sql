@@ -1,0 +1,4 @@
+USE `sit_in_sga`;
+
+ALTER TABLE `users` ADD COLUMN `address` VARCHAR(255) DEFAULT NULL AFTER `email`;
+ALTER TABLE `users` ADD COLUMN `photo` VARCHAR(255) DEFAULT NULL AFTER `address`;
