@@ -19,25 +19,7 @@ $reservations = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 <main class="student-wrap">
     <section class="reservation-grid">
-        <div class="reservation-panel reservation-highlight">
-            <div>
-                <div class="highlight-icon">📅</div>
-                <h1>Plan Your Workload</h1>
-                <p>Ensure you have a dedicated machine for your programming tasks, thesis development, or personal study.</p>
-            </div>
-
-            <div class="reservation-feature-list">
-                <div class="feature-pill">
-                    <span>✔</span>
-                    Guaranteed Slot
-                </div>
-                <div class="feature-pill">
-                    <span>✔</span>
-                    Priority Software
-                </div>
-            </div>
-        </div>
-
+    
         <div class="reservation-panel reservation-form-card">
             <div class="reservation-form-body">
                 <h2>New Reservation</h2>

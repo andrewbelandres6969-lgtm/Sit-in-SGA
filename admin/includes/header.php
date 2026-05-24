@@ -20,13 +20,16 @@ $nav_items = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title ?? 'Admin | CCS Sit-In'); ?></title>
-    <link rel="stylesheet" href="<?php echo asset_url('assets/css/admin.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset_url('assets/css/admin.css') . '?v=' . filemtime(__DIR__ . '/../../assets/css/admin.css'); ?>">
 </head>
 <body class="admin-body">
 
 <header class="admin-topbar">
     <div class="admin-topbar-inner">
-        <div class="admin-brand">College of Computer Studies Admin</div>
+        <a href="<?php echo app_url('admin/index.php'); ?>" class="admin-brand">
+            <img src="<?php echo asset_url('assets/images/CCSlogo.png'); ?>" alt="School logo">
+            <span>College of Computer Studies Admin</span>
+        </a>
 
         <nav class="admin-nav">
             <?php foreach ($nav_items as $file => $item): ?>

@@ -12,14 +12,22 @@ $is_register = $page === 'register.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title ?? 'CCS Sit-In Monitoring System'); ?></title>
-    <link rel="stylesheet" href="<?php echo asset_url('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset_url('assets/css/style.css') . '?v=' . filemtime(__DIR__ . '/../assets/css/style.css'); ?>">
 </head>
 <body>
 
 <header class="site-header">
     <div class="header-inner">
         <a href="<?php echo app_url('index.php'); ?>" class="brand">
-            <span class="brand-logo">CCS</span>
+            <?php $school_logo = __DIR__ . '/../assets/images/CCSlogo.png'; ?>
+            <?php if (file_exists($school_logo)): ?>
+                <img class="brand-logo brand-logo-img" src="<?php echo asset_url('assets/images/CCSlogo.png'); ?>" alt="School logo">
+            <?php else: ?>
+                <span class="brand-logo brand-logo-fallback">
+                    <span>SCHOOL</span>
+                    <span>LOGO</span>
+                </span>
+            <?php endif; ?>
             <span class="brand-title">CCS Sit-In Monitoring System</span>
         </a>
 

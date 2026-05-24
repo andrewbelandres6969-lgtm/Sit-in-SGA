@@ -11,6 +11,7 @@ $nav_items = [
     'history.php' => ['label' => 'History', 'url' => 'student/history.php'],
     'leaderboard.php' => ['label' => 'Leaderboard', 'url' => 'student/leaderboard.php'],
     'reservation.php' => ['label' => 'Reservation', 'url' => 'student/reservation.php'],
+    'feedback.php' => ['label' => 'Feedback', 'url' => 'student/feedback.php'],
 ];
 ?>
 <!DOCTYPE html>
@@ -19,13 +20,21 @@ $nav_items = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title ?? 'Dashboard | CCS Sit-In'); ?></title>
-    <link rel="stylesheet" href="<?php echo asset_url('assets/css/student.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset_url('assets/css/student.css') . '?v=' . filemtime(__DIR__ . '/../../assets/css/student.css'); ?>">
 </head>
 <body class="student-body">
 
 <header class="student-topbar">
     <div class="student-topbar-inner">
-        <div class="student-brand">Dashboard</div>
+        <a href="<?php echo app_url('student/index.php'); ?>" class="student-brand">
+            <?php $school_logo = __DIR__ . '/../../assets/images/school-logo.png'; ?>
+            <?php if (file_exists($school_logo)): ?>
+                <img src="<?php echo asset_url('assets/images/school-logo.png'); ?>" alt="School logo">
+            <?php else: ?>
+                <span class="student-brand-logo">CCS</span>
+            <?php endif; ?>
+            <span>Dashboard</span>
+        </a>
 
         <nav class="student-nav">
             <?php foreach ($nav_items as $file => $item): ?>

@@ -12,8 +12,8 @@ $user = get_logged_in_student($conn);
             <h2>Update Your Information</h2>
             <p class="page-desc">Keep your profile details up to date.</p>
 
-            <form class="student-form" method="POST" enctype="multipart/form-data" action="<?php echo app_url('student/update_profile.php'); ?>">
-                <div>
+            <form class="student-form student-profile-form" method="POST" enctype="multipart/form-data" action="<?php echo app_url('student/update_profile.php'); ?>">
+                <div class="student-profile-photo-field">
                     <label for="photo">Profile Picture</label>
                     <input type="file" id="photo" name="photo" accept="image/png, image/jpeg, image/gif">
                     <?php if (!empty($user['photo'])): ?>

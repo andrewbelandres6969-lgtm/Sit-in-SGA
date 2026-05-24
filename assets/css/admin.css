@@ -8,11 +8,12 @@ body.admin-body {
 }
 
 .admin-topbar {
-    background: rgba(6, 20, 22, 0.92);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(4, 12, 14, 0.96);
+    border-bottom: 2px solid rgba(12, 193, 161, 0.32);
     position: sticky;
     top: 0;
     z-index: 200;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
 .admin-topbar-inner {
@@ -27,16 +28,31 @@ body.admin-body {
 }
 
 .admin-brand {
-    font-size: 17px;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
     white-space: nowrap;
+    text-decoration: none;
+}
+
+.admin-brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 8px 20px rgba(12, 193, 161, 0.18);
 }
 
 .admin-nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px 4px;
+    gap: 8px;
     flex: 1;
     justify-content: center;
 }
@@ -45,29 +61,37 @@ body.admin-body {
     color: rgba(255, 255, 255, 0.88);
     text-decoration: none;
     font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    transition: background 0.2s ease, color 0.2s ease;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     white-space: nowrap;
 }
 
 .admin-nav a:hover,
 .admin-nav a.active {
-    background: rgba(12, 193, 161, 0.18);
+    background: rgba(12, 193, 161, 0.24);
+    border-color: rgba(12, 193, 161, 0.28);
     color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.admin-nav a.active {
+    background: linear-gradient(135deg, #0a5c52, #0a8f78);
+    box-shadow: 0 10px 22px rgba(12, 193, 161, 0.16);
 }
 
 .btn-logout {
-    background: #f5c518;
+    background: linear-gradient(135deg, #f5c518, #f1b400);
     color: #1a1a1a;
     border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 13px 18px;
+    border-radius: 9px;
     font-weight: 700;
     font-size: 13px;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     white-space: nowrap;
 }
 
@@ -319,6 +343,15 @@ body.admin-body {
 .status-completed { background: #cce5ff; color: #004085; }
 .status-expired { background: #e2e3e5; color: #383d41; }
 
+.report-stars {
+    display: block;
+    color: #f5b301;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
 .action-link {
     color: #0a8f78;
     font-weight: 600;
@@ -384,6 +417,15 @@ body.admin-body {
     background: #e0a800;
 }
 
+.btn-timeout {
+    background: #0cc1a1;
+    color: #04241f;
+}
+
+.btn-timeout:hover {
+    background: #0eddb8;
+}
+
 .admin-modal {
     position: fixed;
     inset: 0;
@@ -429,8 +471,108 @@ body.admin-body {
     cursor: pointer;
 }
 
+.student-editor-dialog {
+    width: min(100%, 760px);
+    border-radius: 14px;
+}
+
+.student-editor-header {
+    background: linear-gradient(90deg, #eefaf8, #ffffff);
+    align-items: flex-start;
+}
+
+.student-editor-header h2 {
+    color: #123d42;
+    font-size: 20px;
+}
+
+.student-editor-header p {
+    margin: 6px 0 0;
+    color: #647380;
+    font-size: 13px;
+}
+
+.student-editor-body {
+    padding: 24px;
+    background: #f8fbfa;
+}
+
+.student-editor-summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #d9ebe7;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+.student-editor-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    background: #0cc1a1;
+    color: #04241f;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.student-editor-name {
+    color: #123d42;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.student-editor-meta {
+    margin-top: 4px;
+    color: #647380;
+    font-size: 13px;
+}
+
+.student-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.student-editor-form .form-group {
+    margin-bottom: 0;
+}
+
+.student-editor-form .form-group label {
+    color: #263b42;
+}
+
+.student-editor-form .form-group input,
+.student-editor-form .form-group select {
+    min-height: 44px;
+    background: #ffffff;
+    border-color: #c9d9d6;
+    border-radius: 8px;
+    color: #122b32;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.student-editor-form .form-group input:focus,
+.student-editor-form .form-group select:focus {
+    border-color: #0cc1a1;
+    box-shadow: 0 0 0 3px rgba(12, 193, 161, 0.16);
+}
+
 .modal-body {
     padding: 24px;
+}
+
+.modal-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .modal-footer {
@@ -449,6 +591,17 @@ body.admin-body {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #c5d0d8;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
     font-size: 14px;
 }
 
@@ -531,5 +684,17 @@ body.admin-body {
     .admin-brand {
         font-size: 14px;
         white-space: normal;
+    }
+
+    .modal-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-editor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-editor-summary {
+        align-items: flex-start;
     }
 }

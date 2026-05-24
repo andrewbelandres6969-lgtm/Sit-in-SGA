@@ -26,7 +26,18 @@ $active = $active_stmt->get_result()->fetch_assoc();
             <?php if ((int) $user['sitin_remaining'] <= 0): ?>
                 <p class="page-desc" style="color:#c62828;">You have no remaining sit-in sessions.</p>
             <?php elseif ($active): ?>
-                <p class="page-desc">You have an active session at <strong><?php echo htmlspecialchars($active['lab_name']); ?></strong>.</p>
+                <div class="active-session-card">
+                    <div>
+                        <p class="page-desc">You have an active session at <strong><?php echo htmlspecialchars($active['lab_name']); ?></strong>.</p>
+                        <div class="active-session-meta">
+                            Started: <?php echo date('M d, Y h:i A', strtotime($active['time_in'])); ?>
+                        </div>
+                    </div>
+                    <form method="POST" action="<?php echo app_url('student/time_out.php'); ?>">
+                        <input type="hidden" name="record_id" value="<?php echo (int) $active['id']; ?>">
+                        <button type="submit" class="btn-student-timeout" onclick="return confirm('Time out this session now?');">Time Out</button>
+                    </form>
+                </div>
             <?php else: ?>
                 <form class="student-form" method="POST" action="<?php echo app_url('student/save_sitin.php'); ?>">
                     <div>
